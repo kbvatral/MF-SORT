@@ -9,7 +9,7 @@ output_path = "example_data/overpass_track.avi"
 
 # Load the tracks generated from MF-SORT
 tracks = np.loadtxt(tracks_path, delimiter=",", dtype="int")
-num_tracks = tracks[:, 5].max()
+num_tracks = tracks[:, 1].max()
 COLORS = np.random.randint(0, 255, size=(num_tracks+1, 3), dtype="int")
 
 # Setup Video File
@@ -32,7 +32,7 @@ for frame_number in trange(1, frame_total+1, unit="frames"):
     # Extract the Tracks for the current frame
     frame_tracks = tracks[tracks[:, 0] == frame_number]
     for trk in frame_tracks:
-        _, x, y, w, h, trk_ID = trk
+        trk_ID, x, y, w, h = trk[1:6]
 
         # Draw a bounding box rectangle and label
         color = tuple(int(i) for i in COLORS[trk_ID]) # openCV is picky about data format for color
