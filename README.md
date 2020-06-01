@@ -3,14 +3,14 @@
 ## Introduction
 This repository contains an unofficial implementation of the Simple Online and Realtime Tracking with Motion Features (MF-SORT) algorithm, as it was presented in (Fu et al, 2019). It is an extension of the original [SORT](https://github.com/abewley/sort) algorithm using Mahalanobis distance and a matching cascade similar to that of [DeepSORT](https://github.com/nwojke/deep_sort).
 
-I am not the original author of MF-SORT, though this repository represents a close implementation based on the description gioven in the original publication. See [Fu et al, 2019](https://doi.org/10.1007/978-3-030-34120-6_13) for further details on the algorithm.
+I am not the original author of MF-SORT, though this repository represents a close implementation based on the description given in the original publication. See [Fu et al, 2019](https://doi.org/10.1007/978-3-030-34120-6_13) for further details on the algorithm.
 
 ## Dependencies
 This code was developed and tested on Python 3.6, though it should run on any recent version of Python (3+). The following dependencies are needed to run the tracker:
 
 * Numpy
 * Scipy
-* TQDM
+* TQDM (for progress bars in demo files)
 * OpenCV (for visualization only)
 * imutils (for visualization only)
 
