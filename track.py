@@ -1,5 +1,6 @@
 import numpy as np
 from mf_sort import MF_SORT, Detection
+from mf_sort.utils import format_MOTChallenge
 from tqdm import trange
 
 detections_path = "example_data/overpass_detections.txt"
@@ -20,16 +21,9 @@ for frame_num in trange(frame_range, unit="frames"):
     # Run the tracker
     mot.predict()
     trackers = mot.update(dets) # Returns tuples of (mf_sort.Detection, trk_num)
+    # Use MOT Challenge formatting
+    trackers = format_MOTChallenge(frame_num, trackers)
+    tracks_by_frame.append(trackers)
 
-    # Format output to MOT Benchmark standard
-    for trk, trk_num in trackers:
-        x1 = int(trk.tlwh[0])
-        y1 = int(trk.tlwh[1])
-        w = int(trk.tlwh[2])
-        h = int(trk.tlwh[3])
-
-        trk_out = (frame_num, trk_num, x1, y1, w, h, 1, -1, -1, -1)
-        tracks_by_frame.append(trk_out)
-
-trks = np.array(tracks_by_frame)
+trks = np.concatenate(tracks_by_frame)
 np.savetxt(output_path, trks, delimiter=",", fmt="%d")

@@ -1,6 +1,18 @@
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
+def format_MOTChallenge(frame_num, trackers):
+    trk_fmt = np.zeros((len(trackers), 10), dtype="int")
+    for i, (trk, trk_num) in enumerate(trackers):
+        x1 = int(trk.tlwh[0])
+        y1 = int(trk.tlwh[1])
+        w = int(trk.tlwh[2])
+        h = int(trk.tlwh[3])
+
+        trk_fmt[i] = (frame_num, trk_num, x1, y1, w, h, 1, -1, -1, -1)
+
+    return trk_fmt
+
 def iou(bb_test, bb_gt):
     """
     Computes IOU between two bboxes/detections
