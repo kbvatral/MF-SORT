@@ -1,6 +1,5 @@
 import numpy as np
 from scipy.optimize import linear_sum_assignment
-from filterpy.stats import mahalanobis
 
 def iou(bb_test, bb_gt):
     """
@@ -33,9 +32,7 @@ def hungarian_matching(kf, detections, trackers, cost_threshold):
         for t, trk in enumerate(trackers):
             x = det.to_xyah()
             mean, cov = trk.get_state()
-            mean, cov = kf.project(mean, cov)
-
-            cost_matrix[d, t] = mahalanobis(x, mean, cov)**2
+            cost_matrix[d, t] = kf.gating_distance(mean, cov, x)
 
     # Run Hungarian Algorithm
     matched_indices = linear_sum_assignment(cost_matrix)
