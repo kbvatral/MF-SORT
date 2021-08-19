@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="mf-sort", # Replace with your own username
-    version="0.0.1",
+    name="mf-sort",
+    version="0.1",
     author="Caleb Vatral",
     author_email="caleb.m.vatral@vanderbilt.edu",
     description="Unofficial implementation of the Motion Feature SORT algorithm",
@@ -21,6 +21,7 @@ setuptools.setup(
     install_requires=[
           'numpy',
           'scipy',
+          'filterpy',
       ],
     python_requires='>=3.5',
 )
