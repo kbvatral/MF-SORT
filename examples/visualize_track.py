@@ -3,9 +3,9 @@ import cv2
 from tqdm import trange
 import imutils.video
 
-video_path = "example_data/overpass.mp4"
-tracks_path = "example_data/overpass_track.txt"
-output_path = "example_data/overpass_track.avi"
+video_path = "example_data/PETS09-S2L1.mp4"
+tracks_path = "example_data/PETS09-S2L1_track.txt"
+output_path = "example_data/PETS09-S2L1_tracked.avi"
 
 # Load the tracks generated from MF-SORT
 tracks = np.loadtxt(tracks_path, delimiter=",", dtype="int")

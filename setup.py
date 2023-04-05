@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mf-sort",
-    version="0.1",
+    version="0.2",
     author="Caleb Vatral",
     author_email="caleb.m.vatral@vanderbilt.edu",
     description="Unofficial implementation of the Motion Feature SORT algorithm",
@@ -23,5 +23,8 @@ setuptools.setup(
           'scipy',
           'filterpy',
       ],
+    extras_require={
+        "yolo": ["yolov5"],
+    },
     python_requires='>=3.5',
 )
