@@ -24,7 +24,7 @@ setuptools.setup(
           'filterpy',
       ],
     extras_require={
-        "yolo": ["yolov5"],
+        "yolo": ["yolov5", "imutils", "tqdm"],
     },
     python_requires='>=3.5',
 )
