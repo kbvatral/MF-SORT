@@ -21,7 +21,7 @@ for frame_num in trange(frame_range, unit="frames"):
     trks = mot.step(dets)
     
     for trk, trk_ID in trks:
-        tlwh = trk.tlwh.copy().astype("int")
+        tlwh = np.squeeze(trk.tlwh.copy().astype("int"))
         track_output.append([frame_num, trk_ID, tlwh[0], tlwh[1], tlwh[2], tlwh[3], 1, -1, -1, -1])
 
 trks = np.array(track_output)
